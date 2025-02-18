@@ -22,7 +22,7 @@ spec:
         - name: gateway
           image: mathiskrr/breizhsport-api-gateway:develop
           env:
-             - name: CATEGORIES_SERVICE_URL
+            - name: CATEGORIES_SERVICE_URL
               valueFrom:
                 configMapKeyRef:
                   name: gateway
@@ -37,6 +37,31 @@ spec:
                 configMapKeyRef:
                   name: gateway
                   key: ms-cart
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: DB-NAME
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: DB-USER
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: DB-HOST
+            - name: DB_DIALECT
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: DB-DIALECT
+            - name: DB_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: DB-PASSWORD
           ports:
             - containerPort: 3000
           resources:

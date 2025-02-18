@@ -12,6 +12,7 @@ data:
   DB-USER: "395967_admin"
   DB-HOST: "mysql-breizhsport.alwaysdata.net"
   DB-DIALECT: "mysql"
+  DB-PASSWORD: "admin2025" 
   
   DB_POOL_MAX: "5"      
   DB_POOL_MIN: "0"       

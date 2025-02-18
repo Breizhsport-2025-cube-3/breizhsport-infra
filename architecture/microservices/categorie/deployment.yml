@@ -20,32 +20,35 @@ spec:
     spec:
       containers:
         - name: ms-categorie
-          volumeMounts:
-            - mountPath: "/usr/src/app/static/pictures"
-              name: static-files
           image: mathiskrr/breizhsport-categorie:develop
           env:
             - name: PORT
               value: "4003"
             - name: DB_HOST
-              value: db-categorie
+              valueFrom:
+                configMapKeyRef:
+                  name: ms-categorie
+                  key: DB-HOST
             - name: DB_DIALECT
-              value: "mysql"
+              valueFrom:
+                configMapKeyRef:
+                  name: ms-categorie
+                  key: DB-DIALECT
             - name: DB_NAME
               valueFrom:
                 configMapKeyRef:
                   name: ms-categorie
-                  key: db-name
+                  key: DB-NAME
             - name: DB_USER
               valueFrom:
-                secretKeyRef:
+                configMapKeyRef:
                   name: ms-categorie
-                  key: db-user
+                  key: DB-USER
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: ms-categorie
-                  key: db-password
+                  key: DB_PASSWORD
           ports:
             - containerPort: 4003
           resources:
