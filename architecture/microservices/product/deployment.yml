@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-product
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: ms-product
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ms-product
+    spec:
+      containers:
+        - name: ms-product
+          volumeMounts:
+            - mountPath: "/usr/src/app/static/pictures"
+              name: static-files
+          image: mathiskrr/breizhsport-product:develop
+          env:
+            - name: PORT
+              value: "4002"
+            - name: DB_HOST
+              value: db-product
+            - name: DB_DIALECT
+              value: "mysql"
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: ms-product
+                  key: db-name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ms-product
+                  key: db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ms-product
+                  key: db-password
+          ports:
+            - containerPort: 4002
+          resources:
+            requests:
+              cpu: 100m
+              memory: 150Mi
+            limits:
+              cpu: 150m
+              memory: 200Mi

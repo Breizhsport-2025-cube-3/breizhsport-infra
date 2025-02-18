@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-cart
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: ms-cart
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: ms-cart
+    spec:
+      containers:
+        - name: ms-cart
+          volumeMounts:
+            - mountPath: "/usr/src/app/static/pictures"
+              name: static-files
+          image: mathiskrr/breizhsport-cart:develop
+          env:
+            - name: PORT
+              value: "4001"
+            - name: DB_HOST
+              value: db-cart
+            - name: DB_DIALECT
+              value: "mysql"
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: ms-cart
+                  key: db-name
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: ms-cart
+                  key: db-user
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ms-cart
+                  key: db-password
+          ports:
+            - containerPort: 4001
+          resources:
+            requests:
+              cpu: 100m
+              memory: 150Mi
+            limits:
+              cpu: 150m
+              memory: 200Mi

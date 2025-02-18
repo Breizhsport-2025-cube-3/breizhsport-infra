@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ms-product
+  namespace: prod
+data:
+  DB-NAME: "breizhsport_data"  
+  DB-USER: "395967_admin" 
+  DB-PASSWORD: "admin2025"   
+  DB-HOST: "mysql-breizhsport.alwaysdata.net"    
+  DB-DIALECT: "mysql"  
+
+  DB-POOL-MAX: "5"     
+  DB-POOL-MIN: "0"      
+  DB-POOL-IDLE: "10000" 
+  DB-POOL-ACQUIRE: "30000"
