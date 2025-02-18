@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: gateway
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: mathiskrr/breizhsport-api-gateway:develop
+          env:
+             - name: CATEGORIES_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: ms-categorie
+            - name: PRODUCT_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: ms-product
+            - name: CART_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: gateway
+                  key: ms-cart
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              cpu: 100m
+              memory: 250Mi

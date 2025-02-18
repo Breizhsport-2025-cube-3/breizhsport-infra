@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: front-end
+  namespace: prod
+spec:
+  selector:
+    matchLabels:
+      app: front-end
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: front-end
+    spec:
+      containers:
+        - name: front-end
+          image: mathiskrr/breizhsport-front:develop
+          env:
+            - name: CATEGORIES_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: front-end
+                  key: ms-categorie
+            - name: PRODUCT_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: front-end
+                  key: ms-product
+            - name: CART_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: front-end
+                  key: ms-cart
+          ports:
+            - containerPort: 4200
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+            limits:
+              cpu: 200m
+              memory: 250Mi

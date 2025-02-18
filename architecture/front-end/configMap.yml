@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: front-end
+  namespace: prod
+data:
+  ms-cart: https://api.poc-breizhsport.duckdns.org/cart
+  ms-categorie: https://api.poc-breizhsport.duckdns.org/categories
+  ms-product: https://api.poc-breizhsport.duckdns.org/products
+  
+  # DB-NAME: "breizhsport-data"
+  # DB-USER: "395967-admin"
+  # DB-HOST: "mysql-breizhsport.alwaysdata.net"
+  # DB-DIALECT: "mysql"
+  
+  # CATEGORIES-SERVICE-URL: "http://category-service:4003"
+  # PRODUCT-SERVICE-URL: "http://product-service:4002"
+  # CART-SERVICE-URL: "http://cart-service:4001"
+  # CART-SERVICE-URL-LOCAL: "http://127.0.0.1:4001"
+  # PRODUCT-SERVICE-URL-LOCAL: "http://127.0.0.1:4002"
+  # CATEGORIES-SERVICE-URL-LOCAL: "http://127.0.0.1:4003"
