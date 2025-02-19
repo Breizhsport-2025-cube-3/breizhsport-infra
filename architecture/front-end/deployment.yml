@@ -22,17 +22,17 @@ spec:
         - name: front-end
           image: mathiskrr/breizhsport-front:develop
           env:
-            - name: CATEGORIES_SERVICE_URL
+            - name: ms-categorie
               valueFrom:
                 configMapKeyRef:
                   name: front-end
                   key: ms-categorie
-            - name: PRODUCT_SERVICE_URL
+            - name: ms-product
               valueFrom:
                 configMapKeyRef:
                   name: front-end
                   key: ms-product
-            - name: CART_SERVICE_URL
+            - name: ms-cart
               valueFrom:
                 configMapKeyRef:
                   name: front-end

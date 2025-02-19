@@ -6,7 +6,6 @@ metadata:
 data:
   DB-NAME: "breizhsport_data"  
   DB-USER: "395967_admin" 
-  DB-PASSWORD: "admin2025"   
   DB-HOST: "mysql-breizhsport.alwaysdata.net"    
   DB-DIALECT: "mysql"  
 

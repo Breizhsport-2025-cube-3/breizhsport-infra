@@ -4,9 +4,9 @@ metadata:
   name: gateway
   namespace: prod
 data:
-  ms-cart: https://api.poc-breizhsport.duckdns.org/cart
-  ms-categorie: https://api.poc-breizhsport.duckdns.org/categories
-  ms-product: https://api.poc-breizhsport.duckdns.org/products
+  ms-cart: https://ms-cart/cart
+  ms-categorie: http://ms-categorie/categories
+  ms-product: https://ms-product/products
   
   DB-NAME: "breizhsport_data"
   DB-USER: "395967_admin"
