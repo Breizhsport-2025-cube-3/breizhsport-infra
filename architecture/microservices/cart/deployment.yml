@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: ms-cart
-          image: mathiskrr/breizhsport-cart:develop
+          image: mathiskrr/breizhsport-cart:v0.1
           env:
             - name: PORT
               value: "4001"

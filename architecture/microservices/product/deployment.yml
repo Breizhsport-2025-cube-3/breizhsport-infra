@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: ms-product
-          image: mathiskrr/breizhsport-product:develop
+          image: mathiskrr/breizhsport-product:v0.1
           env:
             - name: PORT
               value: "4002"

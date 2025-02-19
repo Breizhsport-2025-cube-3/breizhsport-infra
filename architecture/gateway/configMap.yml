@@ -4,9 +4,9 @@ metadata:
   name: gateway
   namespace: prod
 data:
-  ms-cart: https://ms-cart/cart
-  ms-categorie: http://ms-categorie/categories
-  ms-product: https://ms-product/products
+  ms-cart: https://ms-cart
+  ms-categorie: http://ms-categorie
+  ms-product: https://ms-product
   
   DB-NAME: "breizhsport_data"
   DB-USER: "395967_admin"

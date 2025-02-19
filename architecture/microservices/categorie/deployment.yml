@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: ms-categorie
-          image: mathiskrr/breizhsport-category:develop
+          image: mathiskrr/breizhsport-category:v0.1
           env:
             - name: PORT
               value: "4003"
